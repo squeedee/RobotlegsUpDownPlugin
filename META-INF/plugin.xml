@@ -20,11 +20,11 @@
 
   <actions>
     <!-- Add your actions here -->
-	  <action id="RLDown" class="org.robotlegs.plugins.upDown.DownAction" text="RL Down: Nothing found">
+	  <action id="RLDown" class="org.robotlegs.plugins.upDown.DownAction" text="RL Down: Preparing Index">
 		  <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt DOWN" second-keystroke="shift ctrl alt DOWN"/>
 		  <add-to-group group-id="GoToMenu" anchor="after" relative-to-action="NextOccurence"/>
 	  </action>
-	  <action id="RLUp" class="org.robotlegs.plugins.upDown.UpAction" text="RL Up: Nothing found">
+	  <action id="RLUp" class="org.robotlegs.plugins.upDown.UpAction" text="RL Up: Preparing Index">
 		  <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt UP" second-keystroke="shift ctrl alt UP"/>
 		  <add-to-group group-id="GoToMenu" anchor="after" relative-to-action="NextOccurence"/>
 	  </action>

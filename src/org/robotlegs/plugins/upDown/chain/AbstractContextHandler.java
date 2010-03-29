@@ -9,9 +9,16 @@ import org.robotlegs.plugins.upDown.strategy.IUpDownStrategy;
  */
 public abstract class AbstractContextHandler {
 
-	public IUpDownStrategy handle(AnActionEvent event) {
+	public IUpDownStrategy handleUp(AnActionEvent event) {
 		if (handled(event))
-			return strategy;
+			return upStrategy;
+
+		return next(event);
+	}
+
+	public IUpDownStrategy handleDown(AnActionEvent event) {
+		if (handled(event))
+			return downStrategy;
 
 		return next(event);
 	}
@@ -23,7 +30,7 @@ public abstract class AbstractContextHandler {
 		if (next_handler == null)
 			throw new Error("No handler found.");
 
-		return next_handler.handle(event);
+		return next_handler.handleUp(event);
 
 	}
 
@@ -45,6 +52,7 @@ public abstract class AbstractContextHandler {
 		super.finalize();
 	}
 
-	protected IUpDownStrategy strategy;
+	protected IUpDownStrategy upStrategy;
+	protected IUpDownStrategy downStrategy;
 
 }

@@ -8,11 +8,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
  */
 public interface IUpDownStrategy {
 	
-	void upPresentation(AnActionEvent event);
-	void downPresentation(AnActionEvent event);
+	void update(AnActionEvent event);
 
-	void doUp(AnActionEvent event);
-	void doDown(AnActionEvent event);
+	void perform(AnActionEvent event);
 
 	
 

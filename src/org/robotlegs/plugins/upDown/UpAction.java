@@ -12,8 +12,9 @@ public class UpAction extends AbstractUpDownAction {
 	@Override
 	public void update(AnActionEvent e) {
 		super.update(e);
-		IUpDownStrategy strategy = upDownComponent().getStrategy(e);
-		strategy.upPresentation(e);
+
+		IUpDownStrategy strategy = upDownComponent().getUpStrategy(e);
+		strategy.update(e);
 	}
 
 	@Override

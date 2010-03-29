@@ -25,10 +25,10 @@ It has several "contexts" as defined in org.robotlegs.plugins.upDown.chain
 #### Mediator Context
 
 1. Find View (Shift)
-  1. Check for __view__ property
-  1. Use simple regex of class, (WidgetMediator looks for WidgetView and Widget, in that order)
+    1. Check for __view__ property
+    1. Use simple regex of class, (WidgetMediator looks for WidgetView and Widget, in that order)
 1. Find Injected Views
-  1. List any Display Tree Object (Sprite?) marked by [Inject] in this mediator
+    1. List any Display Tree Object (Sprite?) marked by [Inject] in this mediator
 
 #### Event context
 
@@ -42,9 +42,9 @@ Finds EventDispatch references in classes and lists those
 #### Command Context
 
 1. Find Event
-  1. check for __event__ property
+    1. check for __event__ property
 1. Find Injected Events
-  1. List any events marked with [Inject] in this command
+    1. List any events marked with [Inject] in this command
 
 #### Actor Context
 
@@ -57,32 +57,36 @@ Finds EventDispatch references in classes and lists those
 #### View Context
 
 1. Find Mediator (SHIFT)
-  1. Find mediators that have a view property matching this class
+    1. Find mediators that have a view property matching this class
 1. Find DispatchEvent
-  1. Find any eventDispatchers and list the event references - this may not be helpful at all in views.
+    1. Find any eventDispatchers and list the event references - this may not be helpful at all in views.
+1. Find Actor
+	1. Find any Actor References in the View
 
 #### Mediator Context
 
 1. Find DispatchEvent
-  1. Find any eventDispatchers and list the event references.
+    1. Find any eventDispatchers and list the event references.
+1. Find Actor
+	1. Find any Actor References in the Mediator
 
 #### Event Context
 
 1. Find Command (SHIFT)
-  1. Find commands that have this event reference in the __event__ property
+    1. Find commands that have this event reference in the __event__ property
 1. Find EventListener
-  1. Find anything that listens for this event
+    1. Find anything that listens for this event
 
 #### Command Context
 
 1. Find Injected Actors (SHIFT)
-  1. Find any Actor injected into this command
+    1. Find any Actor injected into this command
 1. Find DispatchEvent
-  1. Find any eventDispatchers and list the event references.
+    1. Find any eventDispatchers and list the event references.
 
 #### Actor Context
 1. Find DispatchEvent
-  1. Find any eventDispatchers and list the event references.
+    1. Find any eventDispatchers and list the event references.
 
 ### Identifying Contexts
 

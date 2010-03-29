@@ -23,8 +23,12 @@ public class UpDownComponent implements ApplicationComponent {
 		chain.add(new NoContextHandler());
 	}
 
-	public IUpDownStrategy getStrategy(AnActionEvent event) {
-		return chain.handle(event);
+	public IUpDownStrategy getUpStrategy(AnActionEvent event) {
+		return chain.handleUp(event);
+	}
+
+	public IUpDownStrategy getDownStrategy(AnActionEvent event) {
+		return chain.handleDown(event);
 	}
 
 
