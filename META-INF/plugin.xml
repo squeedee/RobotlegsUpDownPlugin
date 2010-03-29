@@ -1,8 +1,8 @@
 <idea-plugin version="2">
-  <name>Robotlegs MVCS Plugin</name>
+  <name>Robotlegs Up Down Plugin</name>
   <description>Helper plguin for Robotlegs MVCS developers</description>
   <version>0.1.2</version>
-  <vendor url="http://www.robotlegs.org" logo="icons/rl.png">Robotlegs</vendor>
+  <vendor url="http://www.visfleet.com" logo="icons/rl.png">Visfleet Ltd</vendor>
   <idea-version since-build="8000"/>
 
   <depends>JavaScript</depends>

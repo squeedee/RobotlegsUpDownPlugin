@@ -1,4 +1,4 @@
-## RobotlegsMVCSPlugin
+## RobotlegsUpDownPlugin
 
 Still in design stages.
 
