@@ -1,0 +1,36 @@
+<idea-plugin version="2">
+  <name>Robotlegs MVCS Plugin</name>
+  <description>Helper plguin for Robotlegs MVCS developers</description>
+  <version>0.1.2</version>
+  <vendor url="http://www.robotlegs.org" logo="icons/rl.png">Robotlegs</vendor>
+  <idea-version since-build="8000"/>
+
+  <depends>JavaScript</depends>
+
+  <application-components>
+    <!-- Add your application components here -->
+	  <component>
+		  <implementation-class>org.robotlegs.plugins.upDown.UpDownComponent</implementation-class>
+	  </component>
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+	  <action id="RLDown" class="org.robotlegs.plugins.upDown.DownAction" text="RL Down: Nothing found">
+		  <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt DOWN" second-keystroke="shift ctrl alt DOWN"/>
+		  <add-to-group group-id="GoToMenu" anchor="after" relative-to-action="NextOccurence"/>
+	  </action>
+	  <action id="RLUp" class="org.robotlegs.plugins.upDown.UpAction" text="RL Up: Nothing found">
+		  <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt UP" second-keystroke="shift ctrl alt UP"/>
+		  <add-to-group group-id="GoToMenu" anchor="after" relative-to-action="NextOccurence"/>
+	  </action>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+</idea-plugin>

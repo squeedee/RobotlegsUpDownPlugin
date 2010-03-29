@@ -1,0 +1,1 @@
+All docs can be found in [the docs folder](docs/README.markdown)
