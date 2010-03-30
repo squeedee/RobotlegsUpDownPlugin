@@ -1,16 +1,13 @@
 package org.robotlegs.plugins.upDown.chain;
 
-import com.intellij.lang.javascript.psi.JSFile;
 import com.intellij.lang.javascript.psi.ecmal4.JSClass;
-import com.intellij.lang.javascript.psi.impl.JSPsiImplUtils;
 import com.intellij.lang.javascript.psi.resolve.JSInheritanceUtil;
 import com.intellij.lang.javascript.psi.resolve.JSResolveUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
-import com.intellij.psi.PsiFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import org.robotlegs.plugins.upDown.strategy.MediatorDownStrategy;
 import org.robotlegs.plugins.upDown.strategy.MediatorUpStrategy;
+import org.robotlegs.plugins.util.JSFileUtil;
 
 /**
  * Created by IntelliJ IDEA. User: rasheed Date: 30/03/2010 Time: 7:14:16 AM To change this template use File | Settings
@@ -24,17 +21,8 @@ public class MediatorContextHandler extends AbstractContextHandler {
 
 	@Override
 	public boolean handled(AnActionEvent event) {
-		PsiFile file = event.getData(DataKeys.PSI_FILE);
 
-		if (file == null)
-			return false;
-
-		if (!(file instanceof JSFile))
-			return false;
-		
-		JSFile castFile = (JSFile) file;
-
-		JSClass fileClass = JSPsiImplUtils.findClass(castFile);
+		JSClass fileClass = JSFileUtil.getJSClass(event);
 
 		if (fileClass == null)
 			return false;

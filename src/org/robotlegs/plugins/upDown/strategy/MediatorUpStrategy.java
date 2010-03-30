@@ -1,7 +1,13 @@
 package org.robotlegs.plugins.upDown.strategy;
 
+import com.intellij.ide.IdeView;
+import com.intellij.lang.javascript.psi.ecmal4.JSClass;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.psi.PsiElement;
+import org.robotlegs.plugins.util.JSFileUtil;
+import org.robotlegs.plugins.util.JSMemberUtil;
 
 /**
  * Created by IntelliJ IDEA. User: rasheed Date: 30/03/2010 Time: 11:11:25 AM To change this template use File |
@@ -18,6 +24,22 @@ public class MediatorUpStrategy implements IUpDownStrategy {
 	}
 
 	public void perform(AnActionEvent event) {
-		// TODO
+		JSClass clazz = JSFileUtil.getJSClass(event);
+
+		if (clazz == null)
+			return;
+
+		PsiElement viewElement = JSMemberUtil.getTypeByAccessorName("view", clazz);
+
+		if (viewElement == null) // todo: nice warning (no dialog)
+			return;
+
+		IdeView ide = event.getData(DataKeys.IDE_VIEW);
+
+		if (ide == null)
+			throw new Error ("Something tragic happened, I don't know how to find the IDE");
+		
+		ide.selectElement(viewElement);
+
 	}
 }

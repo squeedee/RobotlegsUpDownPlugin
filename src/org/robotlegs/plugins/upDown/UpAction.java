@@ -19,6 +19,7 @@ public class UpAction extends AbstractUpDownAction {
 
 	@Override
 	public void actionPerformed(AnActionEvent e) {
-
+		IUpDownStrategy strategy = upDownComponent().getUpStrategy(e);
+		strategy.perform(e);
 	}
 }
