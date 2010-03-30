@@ -1,10 +1,12 @@
 package org.robotlegs.plugins.upDown.chain;
 
 import com.intellij.lang.javascript.psi.JSFile;
+import com.intellij.lang.javascript.psi.ecmal4.JSClass;
+import com.intellij.lang.javascript.psi.impl.JSPsiImplUtils;
+import com.intellij.lang.javascript.psi.resolve.JSInheritanceUtil;
 import com.intellij.lang.javascript.psi.resolve.JSResolveUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import org.robotlegs.plugins.upDown.strategy.MediatorDownStrategy;
@@ -32,15 +34,24 @@ public class MediatorContextHandler extends AbstractContextHandler {
 		
 		JSFile castFile = (JSFile) file;
 
-		return isMediator(castFile);
-	}
-	
-	public static boolean isMediator(JSFile file) {
-		GlobalSearchScope scope = JSResolveUtil.getSearchScope(file);
-		PsiElement clazz = JSResolveUtil.findClassByQName("OtherClass",scope);
-		//PsiElement clazz = JSResolveUtil.findClassByQName("org.robotlegs.base.MediatorBase",scope);
+		JSClass fileClass = JSPsiImplUtils.findClass(castFile);
 
-		return clazz != null;
+		if (fileClass == null)
+			return false;
+		
+		return isMediator(fileClass);
+	}
+
+	// FXIME: Utility
+	private static boolean isMediator(JSClass clazz) {
+		// Fixme: can locating the mediatorClass be optimised? - On tree update?
+		GlobalSearchScope scope = JSResolveUtil.getSearchScope(clazz);
+		JSClass mediatorClass = (JSClass) JSResolveUtil.findClassByQName("org.robotlegs.core.IMediator",scope);
+
+		if (mediatorClass == null)
+			return false;
+
+		return JSInheritanceUtil.isParentClass(clazz,mediatorClass,true);
 	}
 
 
