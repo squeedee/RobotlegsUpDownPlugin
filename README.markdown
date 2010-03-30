@@ -1,5 +1,6 @@
+[Known issues](http://github.com/visfleet/RobotlegsUpDownPlugin/blob/master/docs/known_issues.markdown)
+ 
 More docs can be found in [the docs folder](http://github.com/visfleet/RobotlegsUpDownPlugin/blob/master/docs/README.markdown)
-
 
 ## Robotlegs 'Up Down' Navigation Plugin
 

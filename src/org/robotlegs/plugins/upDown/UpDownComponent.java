@@ -5,7 +5,8 @@ import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 import org.robotlegs.plugins.upDown.chain.AbstractContextHandler;
 import org.robotlegs.plugins.upDown.chain.MediatorContextHandler;
-import org.robotlegs.plugins.upDown.chain.NoContextHandler;
+import org.robotlegs.plugins.upDown.chain.NullContextHandler;
+import org.robotlegs.plugins.upDown.chain.ViewContextHandler;
 import org.robotlegs.plugins.upDown.strategy.IUpDownStrategy;
 
 /**
@@ -19,8 +20,9 @@ public class UpDownComponent implements ApplicationComponent {
 	private AbstractContextHandler chain;
 
 	public void initComponent() {
-		chain = new MediatorContextHandler();
-		chain.add(new NoContextHandler());
+		chain = new ViewContextHandler();
+		chain.add(new MediatorContextHandler());
+		chain.add(new NullContextHandler());
 	}
 
 

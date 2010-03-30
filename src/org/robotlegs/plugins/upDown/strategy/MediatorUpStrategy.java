@@ -31,7 +31,7 @@ public class MediatorUpStrategy implements IUpDownStrategy {
 
 		PsiElement viewElement = JSMemberUtil.getTypeByAccessorName("view", clazz);
 
-		if (viewElement == null) // todo: nice warning (no dialog)
+		if (viewElement == null) // todo: add a nice warning (no dialog)
 			return;
 
 		IdeView ide = event.getData(DataKeys.IDE_VIEW);

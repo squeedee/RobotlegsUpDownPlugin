@@ -30,7 +30,7 @@ public class MediatorContextHandler extends AbstractContextHandler {
 		return isMediator(fileClass);
 	}
 
-	// FXIME: Utility
+	// FIXME Utility
 	private static boolean isMediator(JSClass clazz) {
 		// Fixme: can locating the mediatorClass be optimised? - On tree update?
 		GlobalSearchScope scope = JSResolveUtil.getSearchScope(clazz);
