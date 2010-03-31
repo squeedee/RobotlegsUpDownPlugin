@@ -17,6 +17,15 @@ public class ViewDownStategy implements IUpDownStrategy {
 	}
 
 	public void perform(AnActionEvent event) {
-		// FIXME  implement
+//		JSClass clazz = JSFileUtil.getJSClass(event);
+
+//		if (clazz == null)
+//			return;
+
+		// Todo hunt for a the classes references (clazz in the references catalog)
+
+		//ActionEventUtil.getIdeView(event).selectElement(viewElement);
 	}
+
+	
 }

@@ -13,24 +13,24 @@ public abstract class AbstractContextHandler {
 		if (handled(event))
 			return upStrategy;
 
-		return next(event);
+		return next().handleUp(event);
 	}
 
 	public IUpDownStrategy handleDown(AnActionEvent event) {
 		if (handled(event))
 			return downStrategy;
 
-		return next(event);
+		return next().handleDown(event);
 	}
 
 
 	public abstract boolean handled(AnActionEvent event);
 
-	private IUpDownStrategy next(AnActionEvent event) {
+	private AbstractContextHandler next() {
 		if (next_handler == null)
 			throw new Error("No handler found.");
 
-		return next_handler.handleUp(event);
+		return next_handler;
 
 	}
 
