@@ -6,6 +6,8 @@ Looking to have two actions with default keys assigned.
 
 Using the Shift key as well, users can limit the resultant 'Jump-To' to only those items marked.
 
+**[!]** marks items implemented in this checkin
+
 ## Limiting Jump To
 
 If the Jump-To list has no entries, I want to show some kind of non-intrusive error.
@@ -25,7 +27,7 @@ It has several "contexts" as defined in org.robotlegs.plugins.upDown.chain
 #### Mediator Context
 
 1. Find View (Shift)
-    1. Check for __view__ property
+    1. Check for __view__ property **[!]**
     1. Use simple regex of class, (WidgetMediator looks for WidgetView and Widget, in that order)
 1. Find Injected Views
     1. List any Display Tree Object (Sprite?) marked by [Inject] in this mediator
@@ -57,7 +59,7 @@ Finds EventDispatch references in classes and lists those
 #### View Context
 
 1. Find Mediator (SHIFT)
-    1. Find mediators that have a view property matching this class
+    1. Find mediators that have a view property matching this class **[!]**
 1. Find DispatchEvent
     1. Find any eventDispatchers and list the event references - this may not be helpful at all in views.
 1. Find Actor

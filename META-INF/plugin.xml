@@ -1,10 +1,24 @@
 <idea-plugin version="2">
   <name>Robotlegs Up Down Plugin</name>
   <description>Helper plguin for Robotlegs MVCS developers</description>
-  <version>0.1.3</version>
-  <vendor url="http://www.visfleet.com" logo="icons/rl.png">Visfleet Ltd</vendor>
+  <version>0.1.4</version>
+  <vendor url="http://github.com/visfleet/RobotlegsUpDownPlugin">Visfleet Ltd Labs</vendor>
   <idea-version since-build="8000"/>
+  <change-notes>
+	  <![CDATA[
+	  <b>0.1.4<b>
+	  <ul>
+	    <li>Simplest "Down from view to mediator" support.</li>
+	    <li>Switched to <a href="http://nvie.com/git-model">"nvie git model"</a>.</li>
+	  </ul>
 
+	  <b>0.1.3<b>
+	  <ul>
+	    <li>Initial release of the plugin.</li>
+	    <li>Simplest "Up from Mediator to view" support.</li>
+	  </ul>
+	  ]]>
+  </change-notes>
   <depends>JavaScript</depends>
 
   <application-components>
