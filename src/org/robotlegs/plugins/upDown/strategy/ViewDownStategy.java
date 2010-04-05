@@ -68,7 +68,7 @@ public class ViewDownStategy implements IUpDownStrategy {
 		if (viewMember == null)
 			return false;
 
-		return viewMember == viewClass;
+		return viewMember.isEquivalentTo(viewClass);
 
 	}
 }
