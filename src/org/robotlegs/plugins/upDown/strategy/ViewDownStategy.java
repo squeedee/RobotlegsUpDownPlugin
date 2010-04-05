@@ -14,18 +14,21 @@ import org.robotlegs.plugins.util.JSFileUtil;
 import org.robotlegs.plugins.util.JSMemberUtil;
 
 import java.util.Collection;
+import java.util.ResourceBundle;
 
 /**
  * Created by IntelliJ IDEA. User: rasheed Date: 31/03/2010 Time: 8:15:19 AM To change this template use File | Settings
  * | File Templates.
  */
 public class ViewDownStategy implements IUpDownStrategy {
+
+	protected ResourceBundle resourceBundle = ResourceBundle.getBundle("org.robotlegs.plugins.UpDownPluginBundle");
+	
 	public void update(AnActionEvent event) {
 		Presentation presentation = event.getPresentation();
 
 		presentation.setEnabled(true);
-		// FIXME resource bundles needed
-		presentation.setText("RL Down: View -> [Mediator|Event|Actor]");
+		presentation.setText(resourceBundle.getString("view.down"));
 	}
 
 	public void perform(AnActionEvent event) {
@@ -34,7 +37,6 @@ public class ViewDownStategy implements IUpDownStrategy {
 		if (clazz == null)
 			return;
 
-		// Todo hunt for the classes' references (clazz in the references catalog)
 		GlobalSearchScope scope = JSResolveUtil.getSearchScopeWithPredefined(event.getData(DataKeys.PROJECT));
 
 		Collection<PsiReference> references = ReferencesSearch.search(clazz,scope,false).findAll();

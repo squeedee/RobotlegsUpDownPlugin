@@ -5,8 +5,8 @@ import com.intellij.lang.javascript.psi.resolve.JSInheritanceUtil;
 import com.intellij.lang.javascript.psi.resolve.JSResolveUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.psi.search.GlobalSearchScope;
+import org.robotlegs.plugins.upDown.strategy.MediatorDownStrategy;
 import org.robotlegs.plugins.upDown.strategy.MediatorUpStrategy;
-import org.robotlegs.plugins.upDown.strategy.NullDownStrategy;
 import org.robotlegs.plugins.util.JSFileUtil;
 
 /**
@@ -16,7 +16,7 @@ import org.robotlegs.plugins.util.JSFileUtil;
 public class MediatorContextHandler extends AbstractContextHandler {
 	public MediatorContextHandler() {
 		upStrategy = new MediatorUpStrategy();
-		downStrategy = new NullDownStrategy();
+		downStrategy = new MediatorDownStrategy();
 	}
 
 	@Override
