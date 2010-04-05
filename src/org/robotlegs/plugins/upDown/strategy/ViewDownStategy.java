@@ -5,10 +5,13 @@ import com.intellij.lang.javascript.psi.resolve.JSResolveUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.searches.ReferencesSearch;
+import org.robotlegs.plugins.util.ActionEventUtil;
 import org.robotlegs.plugins.util.JSFileUtil;
+import org.robotlegs.plugins.util.JSMemberUtil;
 
 import java.util.Collection;
 
@@ -36,16 +39,34 @@ public class ViewDownStategy implements IUpDownStrategy {
 
 		Collection<PsiReference> references = ReferencesSearch.search(clazz,scope,false).findAll();
 
+		// for now, all we hunt for is mediators, and of those mediators, only those that specify this view.
+		// these are most likely what we're looking for.
+
+		JSClass candidateClass;
+
 		for (PsiReference reference : references) {
-			System.out.println("***-1-*** " + reference.getRangeInElement().toString());
-			System.out.println("***-2-*** " + reference.getElement().getContainingFile().getName());
-			System.out.println("***-3-*** " + reference.toString());
+//			System.out.println("*** Ref Found ***");
+//			System.out.println("Text Range: " + reference.getRangeInElement().toString());
+//			System.out.println("Element File: " + reference.getElement().getContainingFile().getName());
+
+			candidateClass = JSFileUtil.getJSClass(reference.getElement().getContainingFile());
+
+			if ((candidateClass != null) && directlyMediatedBy(clazz, candidateClass)) {
+				ActionEventUtil.getIdeView(event).selectElement(candidateClass);
+				break;
+			}
+
 		}
 
-		//Collection<PsiReference> ReferencesSearc ReferencesSearc.search(clazz, scope, false).findAll();
-
-		//ActionEventUtil.getIdeView(event).selectElement(viewElement);
 	}
 
-	
+	private static boolean directlyMediatedBy(JSClass viewClass, JSClass candidateClass) {
+		PsiElement viewMember = JSMemberUtil.getTypeByAccessorName("view", candidateClass);
+		
+		if (viewMember == null)
+			return false;
+
+		return viewMember == viewClass;
+
+	}
 }
